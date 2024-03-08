@@ -176,42 +176,44 @@ export default function CreateListing() {
     return <Spinner />;
   }
   return (
-    <main className="max-w-4xl mx-auto overflow-hidden">
-      <div className="w-full">
-        <img src="./src/create.jpg" alt="Banner" className="w-full h-auto object-cover" />
-      </div>
-      <h1 className="text-3xl text-center mt-6 font-bold">Create a Listing</h1>
-      <form onSubmit={onSubmit}>
-        <p className="text-lg mt-6 font-semibold">Sell / Rent</p>
-        <div className="flex">
-          <button
-            type="button"
-            id="type"
-            value="sale"
-            onClick={onChange}
-            className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
-              type === "rent"
-                ? "bg-white text-black"
-                : "bg-slate-600 text-white"
-            }`}
-          >
-            sell
-          </button>
-          <button
+    <>
+    <h2 className="text-3xl font-bold text-red-600 uppercase text-center mt-8 mb-4">Create a Listing</h2>
+    <main className="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-md">
+      <form onSubmit={onSubmit} className="space-y-6">
+        <div className="flex justify-between items-center">
+          <div className="flex-1 mr-2 border border-gray-400 p-2 rounded">
+            <p className="text-lg font-semibold mb-1">Sell / Rent : </p>
+              <div className="flex justify-between">
+                <button
+                  type="button"
+                  id="type"
+                  value="sale"
+                  onClick={onChange}
+                  className={`flex-1 mr-1 px-4 py-2 text-md font-medium uppercase shadow rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out ${
+                    type === "rent"
+                      ? "bg-white text-black"
+                      : "bg-slate-600 text-white"
+                   }w-full`}
+                >
+                sell
+                </button>
+              <button
             type="button"
             id="type"
             value="rent"
             onClick={onChange}
-            className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`flex-1 ml-1 px-4 py-2 text-md font-medium uppercase shadow rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out ${
               type === "sale"
                 ? "bg-white text-black"
                 : "bg-slate-600 text-white"
-            }`}
+            }w-full`}
           >
             rent
           </button>
         </div>
-        <p className="text-lg mt-6 font-semibold">Name</p>
+        </div>
+        <div className="flex-1 ml-2 border border-gray-400 p-2 rounded">
+        <p className="text-lg font-semibold mb-2">Name of the Property : </p>
         <input
           type="text"
           id="name"
@@ -221,11 +223,14 @@ export default function CreateListing() {
           maxLength="32"
           minLength="10"
           required
-          className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+          className="w-full px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600"
         />
-        <div className="flex space-x-6 mb-6">
-          <div>
-            <p className="text-lg font-semibold">Beds</p>
+        </div>
+        </div>
+        <div className="flex items-center justify-between mb-6 space-x-4">
+        <div className="flex-1 flex justify-between px-2 py-2 border border-gray-400 rounded">
+          <div className="w-1/2 px-2 ">
+            <p className="text-lg font-semibold mb-2">Beds : </p>
             <input
               type="number"
               id="bedrooms"
@@ -234,11 +239,12 @@ export default function CreateListing() {
               min="1"
               max="50"
               required
-              className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+              className="w-full px-4 py-2 text-md text-gray-700 bg-white border border-gray-400 rounded focus:outline-none focus:border-red-500"
             />
           </div>
-          <div>
-            <p className="text-lg font-semibold">Baths</p>
+          <div className="w-px bg-gray-300 mx-4 my-2"></div>
+          <div className="w-1/2 px-2">
+            <p className="text-lg font-semibold mb-2">Baths : </p>
             <input
               type="number"
               id="bathrooms"
@@ -247,18 +253,20 @@ export default function CreateListing() {
               min="1"
               max="50"
               required
-              className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+              className="w-full px-4 py-2 text-md text-gray-700 bg-white border border-gray-400 rounded focus:outline-none focus:border-red-500"
             />
           </div>
-        </div>
-        <p className="text-lg mt-6 font-semibold">Parking spot</p>
-        <div className="flex">
+          </div>
+          <div className="flex-1 flex justify-between px-2 py-2 border border-gray-400 rounded">
+        <div className="w-1/2 flex flex-col justify-center ">
+        <p className="text-lg font-semibold mb-2">Parking spot : </p>
+        <div className="flex w-full">
           <button
             type="button"
             id="parking"
             value={true}
             onClick={onChange}
-            className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`flex-1 px-4 py-2 mr-1 text-md font-medium uppercase shadow rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out ${
               !parking ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -269,21 +277,24 @@ export default function CreateListing() {
             id="parking"
             value={false}
             onClick={onChange}
-            className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`flex-1 px-4 py-2 mr-1 text-md font-medium uppercase shadow rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out ${
               parking ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
             no
           </button>
         </div>
-        <p className="text-lg mt-6 font-semibold">Furnished</p>
-        <div className="flex">
+        </div>
+        <div className="w-px bg-gray-300 mx-4 my-2"></div>
+        <div className="w-1/2 flex flex-col justify-center">
+        <p className="text-lg font-semibold mb-2">Furnished : </p>
+        <div className="flex w-full">
           <button
             type="button"
             id="furnished"
             value={true}
             onClick={onChange}
-            className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`flex-1 px-4 py-2 mr-1 text-md font-medium uppercase shadow rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out ${
               !furnished ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -294,14 +305,19 @@ export default function CreateListing() {
             id="furnished"
             value={false}
             onClick={onChange}
-            className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`flex-1 px-4 py-2 mr-1 text-md font-medium uppercase shadow rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out ${
               furnished ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
             no
           </button>
         </div>
-        <p className="text-lg mt-6 font-semibold">Address</p>
+        </div>
+        </div>
+        </div>
+        <div className="flex flex-wrap -mx-2 mb-6">
+        <div className="w-full md:w-1/2 px-2 ">
+        <p className="text-lg font-semibold mb-2">Address</p>
         <textarea
           type="text"
           id="address"
@@ -309,8 +325,9 @@ export default function CreateListing() {
           onChange={onChange}
           placeholder="Address"
           required
-          className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+          className="w-full h-32 px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
         />
+        </div>
         {!geolocationEnabled && (
           <div className="flex space-x-6 justify-start mb-6">
             <div className="">
@@ -341,7 +358,8 @@ export default function CreateListing() {
             </div>
           </div>
         )}
-        <p className="text-lg font-semibold">Description</p>
+        <div className="w-full md:w-1/2 px-2">
+        <p className="text-lg font-semibold mb-2">Description</p>
         <textarea
           type="text"
           id="description"
@@ -349,16 +367,21 @@ export default function CreateListing() {
           onChange={onChange}
           placeholder="Description"
           required
-          className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
+          className="w-full h-32 px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
         />
-        <p className="text-lg font-semibold">Offer</p>
-        <div className="flex mb-6">
+        </div>
+        </div>
+        <div className="mb-4">
+        <div className="flex items-center justify-between">
+        <div className="w-full md:w-1/3 px-3 flex flex-col py-3 border border-gray-400 rounded ">
+        <p className="text-lg font-semibold mb-2">Offer</p>
+        <div className="flex gap-2">
           <button
             type="button"
             id="offer"
             value={true}
             onClick={onChange}
-            className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`px-4 py-2 mr-1 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               !offer ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
@@ -369,17 +392,17 @@ export default function CreateListing() {
             id="offer"
             value={false}
             onClick={onChange}
-            className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
+            className={`px-4 py-2 mr-1 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               offer ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
           >
             no
           </button>
         </div>
-        <div className="flex items-center mb-6">
-          <div className="">
-            <p className="text-lg font-semibold">Regular price</p>
-            <div className="flex w-full justify-center items-center space-x-6">
+        </div>
+        <div className="w-full md:w-1/4 px-3 py-3 border border-gray-400 rounded">
+            <p className="text-lg font-semibold mb-2">Regular price</p>
+            {/* <div className="flex w-full justify-center items-center space-x-6"> */}
               <input
                 type="number"
                 id="regularPrice"
@@ -395,14 +418,12 @@ export default function CreateListing() {
                   <p className="text-md w-full whitespace-nowrap">$ / Month</p>
                 </div>
               )}
-            </div>
+            {/* </div> */}
           </div>
-        </div>
         {offer && (
-          <div className="flex items-center mb-6">
-            <div className="">
-              <p className="text-lg font-semibold">Discounted price</p>
-              <div className="flex w-full justify-center items-center space-x-6">
+          <div className="w-full md:w-1/4 px-2 px-3 py-3 border border-gray-400 rounded">
+              <p className="text-lg font-semibold mb-2">Discounted price</p>
+              {/* <div className="flex w-full justify-center items-center space-x-6"> */}
                 <input
                   type="number"
                   id="discountedPrice"
@@ -420,10 +441,11 @@ export default function CreateListing() {
                     </p>
                   </div>
                 )}
-              </div>
+              {/* </div> */}
             </div>
-          </div>
         )}
+        </div>
+        </div>
         <div className="mb-6">
           <p className="text-lg font-semibold">Images</p>
           <p className="text-gray-600">
@@ -447,5 +469,6 @@ export default function CreateListing() {
         </button>
       </form>
     </main>
+    </>
   );
 }
